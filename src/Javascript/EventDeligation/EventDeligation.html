@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Deligation</title>
+  </head>
+  <body>
+    <ul id="itemList">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+    </ul>
+    <script>
+      // Event delegation is a technique where you attach a single event listener to a parent
+      // element instead of multiple listeners to individual child elements. This improves
+      // performance and simplifies event handling, especially when dealing with dynamically
+      // added elements.
+
+      const itemList = document.getElementById("itemList");
+      itemList.addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+          alert(`You clicked on ${event.target.textContent}`);
+        }
+      });
+    </script>
+  </body>
+</html>
