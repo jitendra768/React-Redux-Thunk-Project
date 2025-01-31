@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crud App</title>
+    <link rel="stylesheet" href="crud.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Simple CRUD App</h2>
+      <input type="text" id="taskInput" placeholder="Enter task" />
+      <button onclick="addTask()">Add Task</button>
+      <ul id="taskList"></ul>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", loadTasks);
+
+      function loadTasks() {
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        const taskList = document.getElementById("taskList");
+        taskList.innerHTML = "";
+        tasks.forEach((task, index) => {
+          let li = document.createElement("li");
+          li.innerHTML = `${task} <button onclick="editTask(${index})">Edit</button> <button onclick="deleteTask(${index})">Delete</button>`;
+          taskList.appendChild(li);
+        });
+      }
+
+      function addTask() {
+        let taskInput = document.getElementById("taskInput");
+        let task = taskInput.value.trim();
+        if (task) {
+          let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+          tasks.push(task);
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+          taskInput.value = "";
+          loadTasks();
+        }
+      }
+
+      function editTask(index) {
+        let tasks = JSON.parse(localStorage.getItem("tasks"));
+        let newTask = prompt("Edit task:", tasks[index]);
+        if (newTask !== null && newTask.trim() !== "") {
+          tasks[index] = newTask;
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+          loadTasks();
+        }
+      }
+
+      function deleteTask(index) {
+        let tasks = JSON.parse(localStorage.getItem("tasks"));
+        tasks.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        loadTasks();
+      }
+    </script>
+  </body>
+</html>
