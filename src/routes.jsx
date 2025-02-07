@@ -12,6 +12,7 @@ import UseStateHook from "./Components/React-Topics/Usestate/UseStateHook";
 import Counter1 from "./Components/React-Topics/LifeCycle/LifeCycle";
 import Topiccss from "./Components/React-Topics/Card/Topiccss";
 import Register from "./Pages/Register";
+import Products from "./View/cart/Products";
 
 
 const router = createBrowserRouter([
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
         element: <Register/>,
       },
       {
-        path: "/",
+        path: "/ProductList",
         element: <ProductList />,
+      },
+      {
+        path: "/",
+        element: <Products />,
       },
       {
         path: "/topics",
