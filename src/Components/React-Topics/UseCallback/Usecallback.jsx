@@ -2,19 +2,16 @@
 // This helps prevent unnecessary re-creations of functions on every render, which can be important for performance optimization,
 // especially when passing functions as props to child components that are wrapped in React.memo or when the callback is a dependency of other hooks.
 
-
 import { useCallback, useState } from "react";
 import Child from "./Child";
 
 const Usecallback = () => {
   const [count, setCount] = useState(0);
 
-  const learning= useCallback(()=>{
-
-  },[])
+  const learning = useCallback(() => {}, []);
   return (
     <div className="font-[sans-serif] space-x-4 space-y-4 text-center">
-    <Child learning={learning}/>
+      <Child learning={learning} />
       <h1 className="text-3xl">Count: {count}</h1>
       <button
         type="button"

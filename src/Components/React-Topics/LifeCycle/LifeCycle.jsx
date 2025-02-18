@@ -6,8 +6,9 @@
 // constructor method called when the components is first created
 // 2. Render Method
 //The render() method is responsible for generating the component's virtual DOM representation based on its current props and state.
-// 3.During the mounting phase, getDerivedStateFromProps() is called after the constructor and before render().
-//  This method is called for every render cycle and provides an opportunity to update the component's state based on changes in props before the initial render.
+// 3. getDerivedStateFromProps()
+// During the mounting phase, getDerivedStateFromProps() is called after the constructor and before render().
+// This method is called for every render cycle and provides an opportunity to update the component's state based on changes in props before the initial render.
 
 import { Component } from "react";
 
@@ -17,7 +18,7 @@ class Counter extends Component {
     this.state = { count: 0 };
   }
 
-  handleClick() {
+  handleClick() { 
     this.setState({ count: this.state.count + 1 });
   }
   render() {

@@ -31,6 +31,7 @@ const navigation = [
       { name: "Usestate", href: "/usestate" },
       { name: "Lifecycle", href: "/lifecycle" },
       { name: "Javascript-Crud", href: "/crud" },
+      { name: "Useeffect", href: "/effect" },
     ],
   },
   // { name: "Control Component", href: "/control", current: false },

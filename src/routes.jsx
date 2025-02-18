@@ -13,6 +13,7 @@ import Counter1 from "./Components/React-Topics/LifeCycle/LifeCycle";
 import Topiccss from "./Components/React-Topics/Card/Topiccss";
 import Register from "./Pages/Register";
 import Products from "./View/cart/Products";
+import MyUseEffect from "./Components/React-Topics/UseEffect/MyUseEffect";
 
 
 const router = createBrowserRouter([
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
         path: "/lifecycle",
         element: <Counter1 />,
       },
+      {
+      path: "/effect",
+      element: <MyUseEffect />,
+    },
       {
         path: "/*",
         element: <Navigate to={'/login'} replace/>,
