@@ -14,7 +14,8 @@ import Topiccss from "./Components/React-Topics/Card/Topiccss";
 import Register from "./Pages/Register";
 import Products from "./View/cart/Products";
 import MyUseEffect from "./Components/React-Topics/UseEffect/MyUseEffect";
-
+import ParentComponent from "./Components/React-Topics/Useref/ForwardRef";
+import { ThemeButton } from "./Components/React-Topics/Usecontext/ThemeContext";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +23,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "/register",
-        element: <Register/>,
+        element: <Register />,
       },
       {
         path: "/ProductList",
@@ -73,12 +74,20 @@ const router = createBrowserRouter([
         element: <Counter1 />,
       },
       {
-      path: "/effect",
-      element: <MyUseEffect />,
-    },
+        path: "/effect",
+        element: <MyUseEffect />,
+      },
+      {
+        path: "/farwardref",
+        element: <ParentComponent />,
+      },
+      {
+        path: "/theme",
+        element: <ThemeButton />,
+      },
       {
         path: "/*",
-        element: <Navigate to={'/login'} replace/>,
+        element: <Navigate to={"/login"} replace />,
       },
     ],
   },

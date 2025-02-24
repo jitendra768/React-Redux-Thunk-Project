@@ -32,6 +32,7 @@ const navigation = [
       { name: "Lifecycle", href: "/lifecycle" },
       { name: "Javascript-Crud", href: "/crud" },
       { name: "Useeffect", href: "/effect" },
+      { name: "ForwadRef", href: "/farwardref" },
     ],
   },
   // { name: "Control Component", href: "/control", current: false },
@@ -42,6 +43,7 @@ const navigation = [
   { name: "About", href: "/about", current: false },
   { name: "Login", href: "/login", current: false },
   { name: "Register", href: "/register", current: false },
+  { name: "theme", href: "/theme", current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
