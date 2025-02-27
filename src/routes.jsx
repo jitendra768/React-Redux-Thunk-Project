@@ -16,6 +16,8 @@ import Products from "./View/cart/Products";
 import MyUseEffect from "./Components/React-Topics/UseEffect/MyUseEffect";
 import ParentComponent from "./Components/React-Topics/Useref/ForwardRef";
 import { ThemeButton } from "./Components/React-Topics/Usecontext/ThemeContext";
+import DatePiker from "./Components/React-Topics/DatePiker";
+import CustomDatePicker from "./Components/React-Topics/CustomDatePicker";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +86,14 @@ const router = createBrowserRouter([
       {
         path: "/theme",
         element: <ThemeButton />,
+      },
+      {
+        path: "/datepicker",
+        element: <DatePiker />,
+      },
+      {
+        path: "/cdatepicker",
+        element: <CustomDatePicker />,
       },
       {
         path: "/*",
