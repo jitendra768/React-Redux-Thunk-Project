@@ -32,6 +32,7 @@ const navigation = [
       { name: "ForwadRef", href: "/farwardref" },
       { name: "datePiker", href: "/datepicker" },
       { name: "custom-datePicker", href: "/cdatepicker" },
+      { name: "class-components", href: "/class_component" },
     ],
   },
   { name: "Contact Us", href: "/contact", current: false },

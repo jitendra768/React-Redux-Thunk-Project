@@ -18,6 +18,7 @@ import ParentComponent from "./Components/React-Topics/Useref/ForwardRef";
 import { ThemeButton } from "./Components/React-Topics/Usecontext/ThemeContext";
 import DatePiker from "./Components/React-Topics/DatePiker";
 import CustomDatePicker from "./Components/React-Topics/CustomDatePicker";
+import Mymainclass from "./Components/React-Topics/Classbased/Mymainclass";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: "/cdatepicker",
         element: <CustomDatePicker />,
+      },
+      {
+        path: "/class_component",
+        element: <Mymainclass />,
       },
       {
         path: "/*",
