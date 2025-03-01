@@ -30,9 +30,11 @@ const navigation = [
       { name: "Javascript-Crud", href: "/crud" },
       { name: "Useeffect", href: "/effect" },
       { name: "ForwadRef", href: "/farwardref" },
-      { name: "datePiker", href: "/datepicker" },
-      { name: "custom-datePicker", href: "/cdatepicker" },
-      { name: "class-components", href: "/class_component" },
+      { name: "DatePiker", href: "/datepicker" },
+      { name: "Custom-DatePicker", href: "/cdatepicker" },
+      { name: "Class-Components", href: "/class_component" },
+      { name: "Funtional-Tab", href: "/functiontabForm" },
+      { name: "Image-Gallery", href: "/images" },
     ],
   },
   { name: "Contact Us", href: "/contact", current: false },
@@ -80,7 +82,10 @@ export default function Navbar() {
 
   return (
     <div className="min-h-full">
-      <Disclosure as="nav" className="fixed w-full top-0 z-50 bg-gray-800 dark:bg-gray-900 shadow-lg">
+      <Disclosure
+        as="nav"
+        className="fixed w-full top-0 z-50 bg-gray-800 dark:bg-gray-900 shadow-lg"
+      >
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -109,7 +114,10 @@ export default function Navbar() {
                                 )}
                               >
                                 {item.name}
-                                <ChevronDownIcon className="ml-1 h-5 w-5 text-gray-300" aria-hidden="true" />
+                                <ChevronDownIcon
+                                  className="ml-1 h-5 w-5 text-gray-300"
+                                  aria-hidden="true"
+                                />
                               </Menu.Button>
                               <Transition
                                 as={Fragment}
@@ -127,7 +135,9 @@ export default function Navbar() {
                                         <Link
                                           to={child.href}
                                           className={classNames(
-                                            active ? "bg-gray-100 dark:bg-gray-700" : "",
+                                            active
+                                              ? "bg-gray-100 dark:bg-gray-700"
+                                              : "",
                                             "block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 transition-colors"
                                           )}
                                         >
@@ -183,7 +193,11 @@ export default function Navbar() {
                     <Menu as="div" className="relative">
                       <Menu.Button className="flex rounded-full bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={user.imageUrl}
+                          alt=""
+                        />
                       </Menu.Button>
                       <Transition
                         as={Fragment}
@@ -201,7 +215,9 @@ export default function Navbar() {
                                 <a
                                   href={item.href}
                                   className={classNames(
-                                    active ? "bg-gray-100 dark:bg-gray-700" : "",
+                                    active
+                                      ? "bg-gray-100 dark:bg-gray-700"
+                                      : "",
                                     "block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 transition-colors"
                                   )}
                                 >
@@ -219,9 +235,15 @@ export default function Navbar() {
                     <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
-                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                        <XMarkIcon
+                          className="block h-6 w-6"
+                          aria-hidden="true"
+                        />
                       ) : (
-                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                        <Bars3Icon
+                          className="block h-6 w-6"
+                          aria-hidden="true"
+                        />
                       )}
                     </Disclosure.Button>
                   </div>
@@ -299,11 +321,19 @@ export default function Navbar() {
               <div className="border-t border-gray-700 pt-4 pb-3">
                 <div className="flex items-center px-5">
                   <div className="flex-shrink-0">
-                    <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+                    <img
+                      className="h-10 w-10 rounded-full"
+                      src={user.imageUrl}
+                      alt=""
+                    />
                   </div>
                   <div className="ml-3">
-                    <div className="text-base font-medium text-white">{user.name}</div>
-                    <div className="text-sm font-medium text-gray-400">{user.email}</div>
+                    <div className="text-base font-medium text-white">
+                      {user.name}
+                    </div>
+                    <div className="text-sm font-medium text-gray-400">
+                      {user.email}
+                    </div>
                   </div>
                   <button className="ml-auto p-2 rounded-full bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
                     <span className="sr-only">View notifications</span>
