@@ -21,6 +21,8 @@ import CustomDatePicker from "./Components/React-Topics/CustomDatePicker";
 import Mymainclass from "./Components/React-Topics/Classbased/Mymainclass";
 import FuntionalTabForm from "./Components/React-Topics/TabedForm/FuntionalTabForm";
 import Imagegallery from "./Components/React-Topics/ImageGallery/Imagegallery";
+import Dropdown from "./Components/React-Topics/DependentDropdown/Dropdown";
+import HomePage from "./Components/Header/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -39,8 +41,12 @@ const router = createBrowserRouter([
         element: <ProductList />,
       },
       {
-        path: "/",
+        path: "/adasd",
         element: <Products />,
+      },
+      {
+        path: "/",
+        element: <HomePage />,
       },
       {
         path: "/topics",
@@ -109,6 +115,10 @@ const router = createBrowserRouter([
       {
         path: "/images",
         element: <Imagegallery />,
+      },
+      {
+        path: "/dropdown",
+        element: <Dropdown />,
       },
       {
         path: "/*",

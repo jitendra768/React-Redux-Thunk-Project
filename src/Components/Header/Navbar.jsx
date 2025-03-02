@@ -1,367 +1,233 @@
-import { useState, useEffect, Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  BellIcon,
-  ChevronDownIcon,
-  XMarkIcon,
-  ShoppingCartIcon,
-  SunIcon,
-  MoonIcon,
-} from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
-
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
-
-const navigation = [
-  { name: "Dashboard", href: "/", current: true },
-  {
-    name: "React Topics",
-    current: false,
-    children: [
-      { name: "React Topics", href: "/topics" },
-      { name: "Usestate", href: "/usestate" },
-      { name: "Lifecycle", href: "/lifecycle" },
-      { name: "Javascript-Crud", href: "/crud" },
-      { name: "Useeffect", href: "/effect" },
-      { name: "ForwadRef", href: "/farwardref" },
-      { name: "DatePiker", href: "/datepicker" },
-      { name: "Custom-DatePicker", href: "/cdatepicker" },
-      { name: "Class-Components", href: "/class_component" },
-      { name: "Funtional-Tab", href: "/functiontabForm" },
-      { name: "Image-Gallery", href: "/images" },
-    ],
-  },
-  { name: "Contact Us", href: "/contact", current: false },
-  { name: "About", href: "/about", current: false },
-  { name: "Login", href: "/login", current: false },
-  { name: "Register", href: "/register", current: false },
-  { name: "Theme", href: "/theme", current: false },
-];
-
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { useState } from "react";
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState(false);
 
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+  const toggleSubmenu = () => {
+    setSubmenuOpen(!submenuOpen);
   };
-
-  // Apply dark mode class to the root element and save preference
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
-
-  // Check for saved theme on mount
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setDarkMode(true);
-    }
-  }, []);
 
   return (
     <div className="min-h-full">
-      <Disclosure
-        as="nav"
-        className="fixed w-full top-0 z-50 bg-gray-800 dark:bg-gray-900 shadow-lg"
-      >
-        {({ open }) => (
-          <>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex h-16 items-center justify-between">
-                {/* Logo & Navigation */}
-                <div className="flex items-center">
-                  <Link to="/" className="flex-shrink-0">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                      alt="Logo"
-                    />
-                  </Link>
-                  <div className="hidden md:flex md:space-x-4 ml-10">
-                    {navigation.map((item) =>
-                      item.children ? (
-                        <Menu as="div" className="relative" key={item.name}>
-                          {({ open: menuOpen }) => (
-                            <>
-                              <Menu.Button
-                                className={classNames(
-                                  "flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                                  item.current
-                                    ? "bg-gray-900 text-white"
-                                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                                )}
-                              >
-                                {item.name}
-                                <ChevronDownIcon
-                                  className="ml-1 h-5 w-5 text-gray-300"
-                                  aria-hidden="true"
-                                />
-                              </Menu.Button>
-                              <Transition
-                                as={Fragment}
-                                enter="transition ease-out duration-200"
-                                enterFrom="opacity-0 translate-y-1"
-                                enterTo="opacity-100 translate-y-0"
-                                leave="transition ease-in duration-150"
-                                leaveFrom="opacity-100 translate-y-0"
-                                leaveTo="opacity-0 translate-y-1"
-                              >
-                                <Menu.Items className="absolute left-0 mt-2 w-48 origin-top-left bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
-                                  {item.children.map((child) => (
-                                    <Menu.Item key={child.name}>
-                                      {({ active }) => (
-                                        <Link
-                                          to={child.href}
-                                          className={classNames(
-                                            active
-                                              ? "bg-gray-100 dark:bg-gray-700"
-                                              : "",
-                                            "block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 transition-colors"
-                                          )}
-                                        >
-                                          {child.name}
-                                        </Link>
-                                      )}
-                                    </Menu.Item>
-                                  ))}
-                                </Menu.Items>
-                              </Transition>
-                            </>
-                          )}
-                        </Menu>
-                      ) : (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          className={classNames(
-                            item.current
-                              ? "bg-gray-900 text-white"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                            "rounded-md px-3 py-2 text-sm font-medium transition-colors"
-                          )}
-                        >
-                          {item.name}
-                        </Link>
-                      )
-                    )}
-                  </div>
-                </div>
-                {/* Right Section */}
-                <div className="flex items-center">
-                  <div className="hidden md:flex items-center space-x-4">
-                    <button
-                      onClick={toggleDarkMode}
-                      className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
-                    >
-                      <span className="sr-only">Toggle dark mode</span>
-                      {darkMode ? (
-                        <SunIcon className="h-5 w-5 text-yellow-400" />
-                      ) : (
-                        <MoonIcon className="h-5 w-5 text-gray-300" />
-                      )}
-                    </button>
-                    <button className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
-                      <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-5 w-5 text-gray-300" />
-                    </button>
-                    <button className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
-                      <span className="sr-only">View cart</span>
-                      <ShoppingCartIcon className="h-5 w-5 text-gray-300" />
-                    </button>
-                    <Menu as="div" className="relative">
-                      <Menu.Button className="flex rounded-full bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src={user.imageUrl}
-                          alt=""
-                        />
-                      </Menu.Button>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="opacity-0 scale-95"
-                        enterTo="opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="opacity-100 scale-100"
-                        leaveTo="opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    active
-                                      ? "bg-gray-100 dark:bg-gray-700"
-                                      : "",
-                                    "block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 transition-colors"
-                                  )}
-                                >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
-                  </div>
-                  {/* Mobile menu button */}
-                  <div className="-mr-2 flex md:hidden">
-                    <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors">
-                      <span className="sr-only">Open main menu</span>
-                      {open ? (
-                        <XMarkIcon
-                          className="block h-6 w-6"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <Bars3Icon
-                          className="block h-6 w-6"
-                          aria-hidden="true"
-                        />
-                      )}
-                    </Disclosure.Button>
-                  </div>
-                </div>
+      <nav className="bg-gray-300 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="text-2xl font-bold text-gray-800">
+                Aarika Flour Mill
               </div>
             </div>
-            {/* Mobile Navigation */}
-            <Disclosure.Panel className="md:hidden">
-              <div className="pt-2 pb-3 space-y-1">
-                {navigation.map((item) =>
-                  item.children ? (
-                    <Menu as="div" className="relative" key={item.name}>
-                      {({ open: mobileMenuOpen }) => (
-                        <>
-                          <Menu.Button
-                            className={classNames(
-                              "w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors",
-                              item.current
-                                ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                            )}
-                          >
-                            {item.name}
-                            <ChevronDownIcon className="h-5 w-5" />
-                          </Menu.Button>
-                          <Transition
-                            as={Fragment}
-                            enter="transition ease-out duration-200"
-                            enterFrom="opacity-0 translate-y-1"
-                            enterTo="opacity-100 translate-y-0"
-                            leave="transition ease-in duration-150"
-                            leaveFrom="opacity-100 translate-y-0"
-                            leaveTo="opacity-0 translate-y-1"
-                          >
-                            <Menu.Items className="mt-1 space-y-1 bg-gray-800 rounded-md">
-                              {item.children.map((child) => (
-                                <Menu.Item key={child.name}>
-                                  {({ active }) => (
-                                    <Link
-                                      to={child.href}
-                                      className={classNames(
-                                        active
-                                          ? "bg-gray-700 text-white"
-                                          : "text-gray-300",
-                                        "block px-4 py-2 text-base transition-colors"
-                                      )}
-                                    >
-                                      {child.name}
-                                    </Link>
-                                  )}
-                                </Menu.Item>
-                              ))}
-                            </Menu.Items>
-                          </Transition>
-                        </>
-                      )}
-                    </Menu>
+
+            {/* Mobile Menu Button */}
+            <div className="flex items-center md:hidden">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="text-gray-800 hover:text-gray-600 focus:outline-none"
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {menuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   ) : (
-                    <Disclosure.Button
-                      key={item.name}
-                      as={Link}
-                      to={item.href}
-                      className={classNames(
-                        item.current
-                          ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                        "block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                      )}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16m-7 6h7"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-4">
+              <a
+                href="#home"
+                className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Home
+              </a>
+              <div className="relative">
+                <button
+                  onClick={toggleSubmenu}
+                  className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                >
+                  Services
+                  <svg
+                    className={`w-4 h-4 ml-1 transform transition-transform duration-200 ${
+                      submenuOpen ? "rotate-180" : "rotate-0"
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                {submenuOpen && (
+                  <div className="absolute left-0 mt-2 w-48 bg-gray-700 shadow-lg rounded-md overflow-hidden">
+                    <a
+                      href="#service1"
+                      className="block px-4 py-2 text-sm text-white hover:bg-gray-400"
                     >
-                      {item.name}
-                    </Disclosure.Button>
-                  )
+                      Service 1
+                    </a>
+                    <a
+                      href="#service2"
+                      className="block px-4 py-2 text-sm text-white hover:bg-gray-400"
+                    >
+                      Service 2
+                    </a>
+                    <a
+                      href="#service3"
+                      className="block px-4 py-2 text-sm text-white hover:bg-gray-400"
+                    >
+                      Service 3
+                    </a>
+                  </div>
                 )}
               </div>
-              <div className="border-t border-gray-700 pt-4 pb-3">
-                <div className="flex items-center px-5">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="h-10 w-10 rounded-full"
-                      src={user.imageUrl}
-                      alt=""
-                    />
-                  </div>
-                  <div className="ml-3">
-                    <div className="text-base font-medium text-white">
-                      {user.name}
-                    </div>
-                    <div className="text-sm font-medium text-gray-400">
-                      {user.email}
-                    </div>
-                  </div>
-                  <button className="ml-auto p-2 rounded-full bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6 text-gray-300" />
-                  </button>
-                </div>
-                <div className="mt-3 space-y-1 px-2">
-                  {userNavigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
-                    >
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
-                </div>
-              </div>
-            </Disclosure.Panel>
-          </>
-        )}
-      </Disclosure>
-      <main className="pt-16">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          {/* Your content goes here */}
+              <a
+                href="#aboutus"
+                className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                About Us
+              </a>
+              <a
+                href="#gallery"
+                className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Gallery
+              </a>
+              <a
+                href="#contactUs"
+                className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Visit Us
+              </a>
+            </div>
+
+            {/* Call Now Button */}
+            <div className="hidden md:flex items-center">
+              <a
+                href="tel:+123"
+                className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200"
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                  />
+                </svg>
+                Call now
+              </a>
+            </div>
+          </div>
         </div>
-      </main>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-gray-400">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a
+                href="#home"
+                className="block text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+              >
+                Home
+              </a>
+              <button
+                onClick={toggleSubmenu}
+                className="w-full text-left text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium flex items-center justify-between"
+              >
+                Services
+                <svg
+                  className={`w-4 h-4 transform transition-transform duration-200 ${
+                    submenuOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {submenuOpen && (
+                <div className="pl-4">
+                  <a
+                    href="#service1"
+                    className="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    Service 1
+                  </a>
+                  <a
+                    href="#service2"
+                    className="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    Service 2
+                  </a>
+                  <a
+                    href="#service3"
+                    className="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    Service 3
+                  </a>
+                </div>
+              )}
+              <a
+                href="#aboutus"
+                className="block text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+              >
+                About Us
+              </a>
+              <a
+                href="#gallery"
+                className="block text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+              >
+                Gallery
+              </a>
+              <a
+                href="#contactUs"
+                className="block text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
+              >
+                Visit Us
+              </a>
+            </div>
+          </div>
+        )}
+      </nav>
     </div>
   );
 }
