@@ -23,6 +23,7 @@ import FuntionalTabForm from "./Components/React-Topics/TabedForm/FuntionalTabFo
 import Imagegallery from "./Components/React-Topics/ImageGallery/Imagegallery";
 import Dropdown from "./Components/React-Topics/DependentDropdown/Dropdown";
 import HomePage from "./Components/Header/HomePage";
+import AddMoreField from "./Components/React-Topics/AddMoreField/AddMoreField";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
         element: <ProductList />,
       },
       {
-        path: "/adasd",
+        path: "/productcart",
         element: <Products />,
       },
       {
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
       {
         path: "/dropdown",
         element: <Dropdown />,
+      },
+      {
+        path: "/addfield",
+        element: <AddMoreField />,
       },
       {
         path: "/*",

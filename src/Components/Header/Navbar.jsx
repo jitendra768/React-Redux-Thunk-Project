@@ -1,232 +1,251 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [submenuOpen, setSubmenuOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [openNestedSubmenu, setOpenNestedSubmenu] = useState(null);
 
-  const toggleSubmenu = () => {
-    setSubmenuOpen(!submenuOpen);
+  const toggleSubmenu = (menuName) => {
+    setOpenSubmenu(openSubmenu === menuName ? null : menuName);
+    setOpenNestedSubmenu(null);
+  };
+
+  const toggleNestedSubmenu = (submenuName) => {
+    setOpenNestedSubmenu(
+      openNestedSubmenu === submenuName ? null : submenuName
+    );
   };
 
   return (
     <div className="min-h-full">
-      <nav className="bg-gray-300 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className="text-2xl font-bold text-gray-800">
-                Aarika Flour Mill
-              </div>
-            </div>
+      <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <div className="text-2xl font-bold text-gray-800">
+            Aarika Flour Mill
+          </div>
 
-            {/* Mobile Menu Button */}
-            <div className="flex items-center md:hidden">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="text-gray-800 hover:text-gray-600 focus:outline-none"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="inline-flex items-center p-2 w-10 h-10 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg className="w-5 h-5" viewBox="0 0 17 14" fill="none">
+              <path
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+
+          {/* Desktop Menu */}
+          <div
+            className={`${
+              menuOpen ? "block" : "hidden"
+            } w-full md:block md:w-auto`}
+          >
+            <ul className="flex flex-col md:flex-row md:space-x-8 p-4 md:p-0 bg-gray-50 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900">
+              <li>
+                <Link
+                  to={"/"}
+                  className="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                 >
-                  {menuOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16m-7 6h7"
-                    />
-                  )}
-                </svg>
-              </button>
-            </div>
+                  Home
+                </Link>
+              </li>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-4">
-              <a
-                href="#home"
-                className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Home
-              </a>
-              <div className="relative">
+              {/* React Task - Main Dropdown */}
+              <li className="relative">
                 <button
-                  onClick={toggleSubmenu}
-                  className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                  onClick={() => toggleSubmenu("reactTask")}
+                  className="flex items-center py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                 >
-                  Services
+                  React Task
                   <svg
-                    className={`w-4 h-4 ml-1 transform transition-transform duration-200 ${
-                      submenuOpen ? "rotate-180" : "rotate-0"
+                    className={`w-4 h-4 ml-2 transform transition-transform ${
+                      openSubmenu === "reactTask" ? "rotate-180" : "rotate-0"
                     }`}
+                    viewBox="0 0 10 6"
                     fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
+                      stroke="currentColor"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
+                      d="M1 1l4 4 4-4"
                     />
                   </svg>
                 </button>
-                {submenuOpen && (
-                  <div className="absolute left-0 mt-2 w-48 bg-gray-700 shadow-lg rounded-md overflow-hidden">
-                    <a
-                      href="#service1"
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-400"
+
+                {/* First Level Dropdown */}
+                {openSubmenu === "reactTask" && (
+                  <div className="absolute left-0 mt-2 w-44 bg-white shadow-lg rounded-md z-10">
+                    <Link
+                      to={"/dropdown"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                     >
-                      Service 1
-                    </a>
-                    <a
-                      href="#service2"
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-400"
+                      Depend Dropdown
+                    </Link>
+                    <Link
+                      to={"/functiontabForm"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                     >
-                      Service 2
-                    </a>
-                    <a
-                      href="#service3"
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-400"
+                      Tab Form
+                    </Link>
+                    <Link
+                      to={"/images"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                     >
-                      Service 3
+                      Image Gallery
+                    </Link>
+
+                    {/* Nested Dropdown Inside React Task */}
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleNestedSubmenu("moreOptions")}
+                        className="flex justify-between w-full px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      >
+                        Product Options
+                        <svg
+                          className={`w-4 h-4 ml-2 transform transition-transform ${
+                            openNestedSubmenu === "moreOptions"
+                              ? "rotate-180"
+                              : "rotate-0"
+                          }`}
+                          viewBox="0 0 10 6"
+                          fill="none"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M1 1l4 4 4-4"
+                          />
+                        </svg>
+                      </button>
+
+                      {/* Nested Dropdown Menu */}
+                      {openNestedSubmenu === "moreOptions" && (
+                        <div className="absolute left-full top-0 mt-0 w-44 bg-white shadow-lg rounded-md z-10">
+                          <Link
+                            to={"/ProductList"}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            Product List
+                          </Link>
+                          <Link
+                            to={"/productcart"}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            Product Cart
+                          </Link>
+                          <Link
+                            to={"/datepicker"}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            Date Picker
+                          </Link>
+                          <Link
+                            to={"/cdatepicker"}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            Custom Date
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+
+                    <Link
+                      to={"/addfield"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Dynamic Form
+                    </Link>
+                  </div>
+                )}
+              </li>
+
+              {/* React Topics Dropdown */}
+              <li className="relative">
+                <button
+                  onClick={() => toggleSubmenu("reactTopics")}
+                  className="flex items-center py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                >
+                  React Topics
+                  <svg
+                    className={`w-4 h-4 ml-2 transform transition-transform ${
+                      openSubmenu === "reactTopics" ? "rotate-180" : "rotate-0"
+                    }`}
+                    viewBox="0 0 10 6"
+                    fill="none"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M1 1l4 4 4-4"
+                    />
+                  </svg>
+                </button>
+
+                {openSubmenu === "reactTopics" && (
+                  <div className="absolute left-0 mt-2 w-44 bg-white shadow-lg rounded-md z-10">
+                    <Link
+                      to={"/dropdown"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Depend Dropdown
+                    </Link>
+                    <Link
+                      to={"/functiontabForm"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Tab Form
+                    </Link>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Earnings
                     </a>
                   </div>
                 )}
-              </div>
-              <a
-                href="#aboutus"
-                className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                About Us
-              </a>
-              <a
-                href="#gallery"
-                className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Gallery
-              </a>
-              <a
-                href="#contactUs"
-                className="text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Visit Us
-              </a>
-            </div>
+              </li>
 
-            {/* Call Now Button */}
-            <div className="hidden md:flex items-center">
-              <a
-                href="tel:+123"
-                className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200"
-              >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-                  />
-                </svg>
-                Call now
-              </a>
-            </div>
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                >
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="md:hidden bg-gray-400">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a
-                href="#home"
-                className="block text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
-              >
-                Home
-              </a>
-              <button
-                onClick={toggleSubmenu}
-                className="w-full text-left text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium flex items-center justify-between"
-              >
-                Services
-                <svg
-                  className={`w-4 h-4 transform transition-transform duration-200 ${
-                    submenuOpen ? "rotate-180" : "rotate-0"
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {submenuOpen && (
-                <div className="pl-4">
-                  <a
-                    href="#service1"
-                    className="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    Service 1
-                  </a>
-                  <a
-                    href="#service2"
-                    className="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    Service 2
-                  </a>
-                  <a
-                    href="#service3"
-                    className="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    Service 3
-                  </a>
-                </div>
-              )}
-              <a
-                href="#aboutus"
-                className="block text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
-              >
-                About Us
-              </a>
-              <a
-                href="#gallery"
-                className="block text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
-              >
-                Gallery
-              </a>
-              <a
-                href="#contactUs"
-                className="block text-gray-800 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium"
-              >
-                Visit Us
-              </a>
-            </div>
-          </div>
-        )}
       </nav>
     </div>
   );
