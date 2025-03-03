@@ -24,6 +24,7 @@ import Imagegallery from "./Components/React-Topics/ImageGallery/Imagegallery";
 import Dropdown from "./Components/React-Topics/DependentDropdown/Dropdown";
 import HomePage from "./Components/Header/HomePage";
 import AddMoreField from "./Components/React-Topics/AddMoreField/AddMoreField";
+import MainTodo from "./Components/React-Topics/Todo/MainTodo";
 
 const router = createBrowserRouter([
   {
@@ -124,6 +125,10 @@ const router = createBrowserRouter([
       {
         path: "/addfield",
         element: <AddMoreField />,
+      },
+      {
+        path: "/todo",
+        element: <MainTodo />,
       },
       {
         path: "/*",

@@ -157,6 +157,12 @@ export default function Navbar() {
                           >
                             Custom Date
                           </Link>
+                          <Link
+                            to={"/todo"}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            Todo App
+                          </Link>
                         </div>
                       )}
                     </div>
