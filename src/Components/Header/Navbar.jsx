@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingCart, User } from "lucide-react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,6 +24,31 @@ export default function Navbar() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div className="text-2xl font-bold text-gray-800">
             Aarika Flour Mill
+          </div>
+
+          {/* Icons Section */}
+          <div className="flex items-center gap-4 md:order-2">
+            <Link to="/cart" className="text-gray-600 dark:text-white hover:text-blue-600">
+              <ShoppingCart size={24} />
+            </Link>
+            <Link to="/profile" className="text-gray-600 dark:text-white hover:text-blue-600">
+              <User size={24} />
+            </Link>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="inline-flex items-center p-2 w-10 h-10 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            >
+              <span className="sr-only">Open main menu</span>
+              <svg className="w-5 h-5" viewBox="0 0 17 14" fill="none">
+                <path
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
