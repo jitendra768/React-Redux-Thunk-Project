@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../Common/Spinner";
 import { fetchData } from "../Redux/Actions/ProductAction";
@@ -7,9 +7,44 @@ const ProductList = () => {
   const dispatch = useDispatch();
   const { data, isLoading, error } = useSelector((state) => state.allProducts);
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const filteredProducts = data?.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (selectedCategory === "" || item.category === selectedCategory)
+  );
+
+  const categories = [...new Set(data?.map((item) => item.category))];
+
+  const totalPages = Math.ceil(filteredProducts?.length / itemsPerPage);
+  const paginatedProducts = filteredProducts?.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (newPage) => {
+    if (newPage > 0 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
+  };
 
   if (isLoading) {
     return <Spinner />;
@@ -20,108 +55,90 @@ const ProductList = () => {
   }
 
   return (
-    <div className="font-sans p-4 mx-auto lg:max-w-6xl md:max-w-3xl">
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        {data &&
-          data.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white flex flex-col overflow-hidden cursor-pointer hover:shadow-md transition-all"
-            >
-              <div className="w-full">
+    <div className="font-sans p-6 w-full flex flex-col gap-6 bg-gray-50 min-h-screen">
+      {/* Search and Filter */}
+      <div className="flex flex-col md:flex-row gap-6 items-center bg-white p-6 rounded-lg shadow-md">
+        <div className="w-full md:w-1/4">
+          <h3 className="font-semibold text-lg mb-2">Filter by Category</h3>
+          <select
+            className="w-full p-3 border rounded-lg"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
+            <option value="">All</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="w-full md:w-3/4">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={handleSearch}
+            className="w-full p-3 border rounded-lg"
+          />
+        </div>
+      </div>
+      
+      {/* Product List */}
+      <div className="w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {paginatedProducts?.length > 0 ? (
+            paginatedProducts.map((item) => (
+              <div
+                key={item.id}
+                className="bg-white flex flex-col overflow-hidden cursor-pointer hover:shadow-lg transition-all rounded-lg"
+              >
                 <img
                   src={item.thumbnail}
                   alt={item.thumbnail}
-                  className="w-full object-cover object-top aspect-[230/307]"
+                  className="w-full object-cover object-top h-60"
                 />
-              </div>
-
-              <div className="p-2 flex-1 flex flex-col">
-                <div className="flex-1">
-                  <h5 className="text-sm sm:text-base font-bold text-gray-800 truncate">
+                <div className="p-4 flex-1 flex flex-col">
+                  <h5 className="text-lg font-semibold text-gray-800 truncate">
                     {item.title}
                   </h5>
                   <p className="mt-1 text-gray-500 truncate">{item.category}</p>
-                  <div className="flex flex-wrap justify-between gap-2 mt-2">
-                    <div className="flex gap-2">
-                      <h6 className="text-sm sm:text-base font-bold text-gray-800">
-                        ${item.price}
-                      </h6>
-                      <h6 className="text-sm sm:text-base text-gray-500">
-                        <strike>$15</strike>
-                      </h6>
-                    </div>
-                    <div className="flex items-center gap-0.5">
-                      <svg
-                        className="w-[14px] h-[14px] fill-blue-600"
-                        viewBox="0 0 14 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                      </svg>
-                      <svg
-                        className="w-[14px] h-[14px] fill-blue-600"
-                        viewBox="0 0 14 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                      </svg>
-                      <svg
-                        className="w-[14px] h-[14px] fill-blue-600"
-                        viewBox="0 0 14 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                      </svg>
-                      <svg
-                        className="w-[14px] h-[14px] fill-[#CED5D8]"
-                        viewBox="0 0 14 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                      </svg>
-                      <svg
-                        className="w-[14px] h-[14px] fill-[#CED5D8]"
-                        viewBox="0 0 14 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 mt-4">
-                  <div
-                    className="bg-pink-100 hover:bg-pink-200 w-12 h-9 flex items-center justify-center rounded cursor-pointer"
-                    title="Wishlist"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16px"
-                      className="fill-pink-600 inline-block"
-                      viewBox="0 0 64 64"
-                    >
-                      <path
-                        d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
-                        data-original="#000000"
-                      ></path>
-                    </svg>
-                  </div>
+                  <h6 className="text-lg font-bold text-blue-600 mt-2">
+                    ${item.price}
+                  </h6>
                   <button
                     type="button"
-                    className="text-sm px-2 min-h-[36px] w-full bg-blue-600 hover:bg-blue-700 text-white tracking-wide ml-auto outline-none border-none rounded"
+                    className="text-md px-4 py-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium tracking-wide mt-4 rounded-lg"
                   >
                     Add to cart
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-center col-span-full text-lg font-semibold text-gray-600">No products found.</p>
+          )}
+        </div>
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-8 gap-4">
+            <button
+              className="px-5 py-3 border rounded-lg bg-white shadow-md disabled:opacity-50 hover:bg-gray-100"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Prev
+            </button>
+            <span className="px-5 py-3 bg-gray-100 rounded-lg font-medium text-lg">Page {currentPage} of {totalPages}</span>
+            <button
+              className="px-5 py-3 border rounded-lg bg-white shadow-md disabled:opacity-50 hover:bg-gray-100"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
