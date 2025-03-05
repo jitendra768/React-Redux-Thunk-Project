@@ -199,6 +199,12 @@ export default function Navbar() {
                     >
                       Dynamic Form
                     </Link>
+                    <Link
+                      to={"/stopwatch"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Stop Watch
+                    </Link>
                   </div>
                 )}
               </li>

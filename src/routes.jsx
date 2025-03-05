@@ -25,6 +25,7 @@ import Dropdown from "./Components/React-Topics/DependentDropdown/Dropdown";
 import HomePage from "./Components/Header/HomePage";
 import AddMoreField from "./Components/React-Topics/AddMoreField/AddMoreField";
 import MainTodo from "./Components/React-Topics/Todo/MainTodo";
+import Stopwatch from "./Components/React-Topics/Stopwatch/Stopwatch";
 
 const router = createBrowserRouter([
   {
@@ -129,6 +130,10 @@ const router = createBrowserRouter([
       {
         path: "/todo",
         element: <MainTodo />,
+      },
+      {
+        path: "/stopwatch",
+        element: <Stopwatch />,
       },
       {
         path: "/*",
