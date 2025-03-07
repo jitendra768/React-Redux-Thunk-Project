@@ -13,4 +13,4 @@ const VirtualDom = () => {
     )
   }
   
-  export default VirtualDom
+export default VirtualDom

@@ -1,4 +1,3 @@
-import React from 'react'
 import ChildComponents from './ChildComponents'
 
 const LiftingStateup = () => {

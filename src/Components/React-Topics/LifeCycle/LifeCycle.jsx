@@ -36,8 +36,8 @@ export default Counter;
 // *************************************** ComponentDidMount *********************************************
 // 2. ComponentDidMount
 // The componentDidMount() method is called once the component has been mounted into the DOM.
-//  It is typically used to set up any necessary event listeners or timers, perform any necessary API calls or data fetching,
-//   and perform other initialization tasks that require access to the browser's DOM API.
+// It is typically used to set up any necessary event listeners or timers, perform any necessary API calls or data fetching,
+// and perform other initialization tasks that require access to the browser's DOM API.
 
 // export class Header extends Component {
 //   constructor(props) {
