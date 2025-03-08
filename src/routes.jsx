@@ -26,6 +26,7 @@ import HomePage from "./Components/Header/HomePage";
 import AddMoreField from "./Components/React-Topics/AddMoreField/AddMoreField";
 import MainTodo from "./Components/React-Topics/Todo/MainTodo";
 import Stopwatch from "./Components/React-Topics/Stopwatch/Stopwatch";
+import Timezone from "./Components/React-Topics/Timezone/Timezone";
 
 const router = createBrowserRouter([
   {
@@ -134,6 +135,10 @@ const router = createBrowserRouter([
       {
         path: "/stopwatch",
         element: <Stopwatch />,
+      },
+      {
+        path: "/timezone",
+        element: <Timezone />,
       },
       {
         path: "/*",
