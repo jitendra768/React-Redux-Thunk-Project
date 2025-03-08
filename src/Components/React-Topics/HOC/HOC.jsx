@@ -1,17 +1,35 @@
-// In React, a higher-order component is a function that takes a component as
-// an argument and returns a new component that wraps the original component.
+/* eslint-disable react/display-name */
+// A Higher-Order Component (HOC) is an advanced pattern in React used for reusing component logic.
+// It is a function that takes a component and returns a new component with additional props or behavior.
+// HOCs are not part of the React API but are a pattern that emerges from React's compositional nature.
 
+import React from "react";
+import { Redirect } from "react-router-dom";
 
-// const newComponent = higherFunction(WrappedComponent);
+const withAuth = (WrappedComponent) => {
+  return class extends React.Component {
+    state = {
+      isAuthenticated: false,
+    };
 
-// import React, { useState, useEffect } from 'react';
+    componentDidMount() {
+      // Check authentication status (e.g., from localStorage or an API)
+      const token = localStorage.getItem("authToken");
+      if (token) {
+        this.setState({ isAuthenticated: true });
+      }
+    }
 
-// const withEnhancement = (BaseComponent) => {
-//  // HOC logic using hooks
-//  return function EnhancedComponent(props) {
-//    // HOC-specific logic using hooks
-//    return (
-//      <BaseComponent {...props} enhancedProp="someValue" />
-//    );
-//  };
-// };
+    render() {
+      const { isAuthenticated } = this.state;
+
+      if (!isAuthenticated) {
+        return <Redirect to="/login" />; // Redirect to login if not authenticated
+      }
+
+      return <WrappedComponent {...this.props} />; // Render the wrapped component
+    }
+  };
+};
+
+export default withAuth;
