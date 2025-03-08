@@ -13,7 +13,6 @@ const withAuth = (WrappedComponent) => {
     };
 
     componentDidMount() {
-      // Check authentication status (e.g., from localStorage or an API)
       const token = localStorage.getItem("authToken");
       if (token) {
         this.setState({ isAuthenticated: true });
@@ -24,10 +23,10 @@ const withAuth = (WrappedComponent) => {
       const { isAuthenticated } = this.state;
 
       if (!isAuthenticated) {
-        return <Redirect to="/login" />; // Redirect to login if not authenticated
+        return <Redirect to="/login" />;
       }
 
-      return <WrappedComponent {...this.props} />; // Render the wrapped component
+      return <WrappedComponent {...this.props} />;
     }
   };
 };

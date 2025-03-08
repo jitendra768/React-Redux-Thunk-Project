@@ -1,20 +1,23 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
-import React, { useState } from "react";
+import { useState } from "react";
+import UserProfile from "./UserProfile";
 
 const PureFunction = () => {
-  const [count, setCount] = useState(0);
+  const [name] = useState("John Doe");
+  const [age] = useState(25);
+  const [counter, setCounter] = useState(0);
+
+  const incrementCounter = () => {
+    setCounter(counter + 1);
+  };
+
   return (
-    <>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <MyComponent name="John" />
-    </>
+    <div>
+      <UserProfile name={name} age={age} />
+      <button onClick={incrementCounter}>Increment Counter: {counter}</button>
+    </div>
   );
 };
 
 export default PureFunction;
-
-const MyComponent = React.memo(({ name }) => {
-  console.log("Rendered");
-  return <h1>{name}</h1>;
-});

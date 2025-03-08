@@ -27,6 +27,7 @@ import AddMoreField from "./Components/React-Topics/AddMoreField/AddMoreField";
 import MainTodo from "./Components/React-Topics/Todo/MainTodo";
 import Stopwatch from "./Components/React-Topics/Stopwatch/Stopwatch";
 import Timezone from "./Components/React-Topics/Timezone/Timezone";
+import BgChanger from "./Components/React-Topics/BgChanger/BgChanger";
 
 const router = createBrowserRouter([
   {
@@ -139,6 +140,10 @@ const router = createBrowserRouter([
       {
         path: "/timezone",
         element: <Timezone />,
+      },
+      {
+        path: "/bgchnager",
+        element: <BgChanger />,
       },
       {
         path: "/*",

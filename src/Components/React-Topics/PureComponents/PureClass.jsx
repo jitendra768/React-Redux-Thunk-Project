@@ -1,14 +1,24 @@
 /* eslint-disable react/prop-types */
-// A Pure Component in React is a component that only re-renders when its props or state change.
-// This prevents unnecessary renders and improves performance.
 
-import { PureComponent } from "react";
+// A Pure Component in React is a component that optimizes performance by reducing unnecessary re-renders.
+// It is a class-based component that automatically implements the shouldComponentUpdate lifecycle method
+// with a shallow comparison of props and state.
+// If the props and state haven't changed, the component won't re-render.
 
-class MyComponent extends PureComponent{
-    render(){
-    console.log("render",this.render)
-    return <h1>{this.props.name}</h1>;
-    }
+import { PureComponent } from 'react';
+
+class UserProfile extends PureComponent {
+  render() {
+    const { name, age } = this.props;
+    console.log('UserProfile rendered'); // Log to check re-renders
+    return (
+      <div>
+        <h2>User Profile</h2>
+        <p>Name: {name}</p>
+        <p>Age: {age}</p>
+      </div>
+    );
+  }
 }
 
-export default MyComponent
+export default UserProfile;

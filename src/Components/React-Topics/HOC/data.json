@@ -1,0 +1,228 @@
+ {
+    "series": [
+        {
+            "name": "Net",
+            "color": "#FF0000",
+            "type": "column",
+            "stack": 1,
+            "data": [
+                565,
+                84,
+                1198,
+                1771,
+                1750,
+                1659,
+                757,
+                null,
+                1351,
+                1602,
+                1073
+            ],
+            "yAxis": 0,
+            "usagedata": [
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 1242,
+                    "usageAttribute4": 677,
+                    "usageAttribute5": "8/5/2024 12:00:00 AM",
+                    "readingFrom": "2024-03-06",
+                    "readingTo": "2024-04-04",
+                    "amount": 677,
+                    "consumption": 1242,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 845,
+                    "usageAttribute4": 761,
+                    "usageAttribute5": "8/5/2024 12:00:00 AM",
+                    "readingFrom": "2024-04-04",
+                    "readingTo": "2024-05-03",
+                    "amount": 761,
+                    "consumption": 845,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 1764,
+                    "usageAttribute4": 566,
+                    "usageAttribute5": "8/5/2024 12:00:00 AM",
+                    "readingFrom": "2024-05-03",
+                    "readingTo": "2024-06-04",
+                    "amount": 566,
+                    "consumption": 1764,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 2173,
+                    "usageAttribute4": 402,
+                    "usageAttribute5": "8/5/2024 12:00:00 AM",
+                    "readingFrom": "2024-06-04",
+                    "readingTo": "2024-07-05",
+                    "amount": 402,
+                    "consumption": 2173,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 2062,
+                    "usageAttribute4": 312,
+                    "usageAttribute5": "9/4/2024 12:00:00 AM",
+                    "readingFrom": "2024-07-05",
+                    "readingTo": "2024-08-05",
+                    "amount": 312,
+                    "consumption": 2062,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 1946,
+                    "usageAttribute4": 287,
+                    "usageAttribute5": "10/3/2024 12:00:00 AM",
+                    "readingFrom": "2024-08-05",
+                    "readingTo": "2024-09-04",
+                    "amount": 287,
+                    "consumption": 1946,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 1381,
+                    "usageAttribute4": 624,
+                    "usageAttribute5": "12/4/2024 12:00:00 AM",
+                    "readingFrom": "2024-10-03",
+                    "readingTo": "2024-11-01",
+                    "amount": 624,
+                    "consumption": 1381,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                null,
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 1811,
+                    "usageAttribute4": 460,
+                    "usageAttribute5": null,
+                    "readingFrom": "2024-11-01",
+                    "readingTo": "2024-12-04",
+                    "amount": 460,
+                    "consumption": 1811,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 1947,
+                    "usageAttribute4": 345,
+                    "usageAttribute5": "2/5/2025 12:00:00 AM",
+                    "readingFrom": "2024-12-04",
+                    "readingTo": "2025-01-07",
+                    "amount": 345,
+                    "consumption": 1947,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                },
+                {
+                    "accountNumber": "1609714341",
+                    "meterNumber": "A1ND376031",
+                    "usageAttribute1": null,
+                    "usageAttribute2": "6386205539",
+                    "usageAttribute3": 1538,
+                    "usageAttribute4": 465,
+                    "usageAttribute5": null,
+                    "readingFrom": "2025-01-07",
+                    "readingTo": "2025-02-05",
+                    "amount": 465,
+                    "consumption": 1538,
+                    "tierTou": null,
+                    "uom": "KWH",
+                    "readDate": "0001-01-01T00:00:00+00:00",
+                    "ratePlan": "usage"
+                }
+            ],
+            "showInLegend": true
+        }
+    ],
+    "xAxis": {
+        "categories": [
+            "04/04/24",
+            "05/03/24",
+            "06/04/24",
+            "07/05/24",
+            "08/05/24",
+            "09/04/24",
+            "11/01/24",
+            null,
+            "12/04/24",
+            "01/07/25",
+            "02/05/25"
+        ],
+        "labels": {
+            "rotation": 290,
+            "align": "right",
+            "step": 1
+        }
+    },
+    "yAxis": [
+        {
+            "min": null,
+            "max": null,
+            "title": {
+                "text": "kWh"
+            }
+        }
+    ]
+}
+
