@@ -28,10 +28,16 @@ export default function Navbar() {
 
           {/* Icons Section */}
           <div className="flex items-center gap-4 md:order-2">
-            <Link to="/cart" className="text-gray-600 dark:text-white hover:text-blue-600">
+            <Link
+              to="/cart"
+              className="text-gray-600 dark:text-white hover:text-blue-600"
+            >
               <ShoppingCart size={24} />
             </Link>
-            <Link to="/profile" className="text-gray-600 dark:text-white hover:text-blue-600">
+            <Link
+              to="/profile"
+              className="text-gray-600 dark:text-white hover:text-blue-600"
+            >
               <User size={24} />
             </Link>
             <button
@@ -254,10 +260,22 @@ export default function Navbar() {
                       ControlComponents
                     </Link>
                     <Link
-                      to={"/functiontabForm"}
+                      to={"/forwardRef"}
                       className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                     >
-                      Tab Form
+                      forwardRef
+                    </Link>
+                    <Link
+                      to={"/useRef"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Use Ref
+                    </Link>
+                    <Link
+                      to={"/useReducer"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Use Reducer
                     </Link>
                     <a
                       href="#"

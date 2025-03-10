@@ -11,10 +11,16 @@ function ParentComponent() {
   const handleInputRef = () => {
     inputRef.current.focus();
   };
+
   return (
-    <div>
+    <div className="p-5 font-sans">
       <InputField ref={inputRef} placeholder="Type something..." />
-      <button onClick={handleInputRef}>Focus Input</button>
+      <button
+        onClick={handleInputRef}
+        className="mt-3 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Focus Input
+      </button>
     </div>
   );
 }
@@ -22,7 +28,12 @@ function ParentComponent() {
 export default ParentComponent;
 
 const InputField = forwardRef((props, ref) => {
-  console.log("🚀 ~ InputField ~ ref:", ref);
-  console.log("🚀 ~ InputField ~ props:", props);
-  return <input type="text" ref={ref} {...props} />;
+  return (
+    <input
+      type="text"
+      ref={ref}
+      {...props}
+      className="w-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    />
+  );
 });

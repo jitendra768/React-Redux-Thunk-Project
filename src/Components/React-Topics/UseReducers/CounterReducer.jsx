@@ -30,28 +30,40 @@ const CounterReducer = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
-      <p>{state.count}</p>
-      <button
-        type="button"
-        onClick={() => dispatch({ type: "INCREMENT" })}
-        className="mt-4 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-blue-600 hover:bg-blue-700"
-      >
-        INCREMENT
-      </button>
-      <button
-        type="button"
-        onClick={() => dispatch({ type: "DECREMENT" })}
-        className="mt-4 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-sky-600 hover:bg-sky-700"
-      >
-        DECREMENT
-      </button>
-      <button
-        type="button"
-        onClick={() => dispatch({ type: "RESET" })}
-        className="mt-4 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-red-600 hover:bg-red-700"
-      >
-        RESET
-      </button>
+      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6 font-sans">
+        {/* Counter Display */}
+        <p className="text-6xl font-bold text-gray-900 mb-8">{state.count}</p>
+
+        {/* Buttons Container */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          {/* INCREMENT Button */}
+          <button
+            type="button"
+            onClick={() => dispatch({ type: "INCREMENT" })}
+            className="px-8 py-3 rounded-xl text-white text-lg font-medium tracking-wide bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
+            INCREMENT
+          </button>
+
+          {/* DECREMENT Button */}
+          <button
+            type="button"
+            onClick={() => dispatch({ type: "DECREMENT" })}
+            className="px-8 py-3 rounded-xl text-white text-lg font-medium tracking-wide bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
+            DECREMENT
+          </button>
+
+          {/* RESET Button */}
+          <button
+            type="button"
+            onClick={() => dispatch({ type: "RESET" })}
+            className="px-8 py-3 rounded-xl text-white text-lg font-medium tracking-wide bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
+            RESET
+          </button>
+        </div>
+      </div>
     </>
   );
 };

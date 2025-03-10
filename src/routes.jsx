@@ -28,6 +28,8 @@ import MainTodo from "./Components/React-Topics/Todo/MainTodo";
 import Stopwatch from "./Components/React-Topics/Stopwatch/Stopwatch";
 import Timezone from "./Components/React-Topics/Timezone/Timezone";
 import BgChanger from "./Components/React-Topics/BgChanger/BgChanger";
+import UseRefhooks from "./Components/React-Topics/Useref/UseRefhooks";
+import CounterReducer from "./Components/React-Topics/UseReducers/CounterReducer";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/useReducer",
+        element: <CounterReducer />,
       },
       {
         path: "/topics",
@@ -94,8 +100,12 @@ const router = createBrowserRouter([
         element: <MyUseEffect />,
       },
       {
-        path: "/farwardref",
+        path: "/forwardRef",
         element: <ParentComponent />,
+      },
+      {
+        path: "/useRef",
+        element: <UseRefhooks />,
       },
       {
         path: "/theme",
