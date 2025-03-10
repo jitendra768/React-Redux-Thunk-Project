@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 export default function AddMoreField() {
-  const [fields, setFields] = useState([{username: "", email: "" }]);
+  const [fields, setFields] = useState([{ id: Date.now(), username: "", email: "" }]);
+  const [submittedData, setSubmittedData] = useState([]);
 
   const addField = () => {
-    setFields([...fields, { username: "", email: "" }]);
+    setFields([...fields, { id: Date.now(), username: "", email: "" }]);
   };
 
   const removeField = (id) => {
@@ -21,6 +22,7 @@ export default function AddMoreField() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmittedData(fields);
     console.log("Submitted Data:", fields);
   };
 
@@ -66,12 +68,19 @@ export default function AddMoreField() {
         </button>
         <button
           type="submit"
-          className="mt-3 bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600"
+          className="mt-3 ml-2 bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600"
         >
           Submit
         </button>
       </form>
-      {JSON.stringify(fields)}
+
+      {/* Display Submitted Data */}
+      {submittedData.length > 0 && (
+        <div className="mt-5 p-3 bg-gray-100 rounded">
+          <h3 className="font-bold mb-2">Submitted Data:</h3>
+          <pre className="text-sm">{JSON.stringify(submittedData, null, 2)}</pre>
+        </div>
+      )}
     </div>
   );
 }
