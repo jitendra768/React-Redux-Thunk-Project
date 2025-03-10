@@ -30,6 +30,7 @@ import Timezone from "./Components/React-Topics/Timezone/Timezone";
 import BgChanger from "./Components/React-Topics/BgChanger/BgChanger";
 import UseRefhooks from "./Components/React-Topics/Useref/UseRefhooks";
 import CounterReducer from "./Components/React-Topics/UseReducers/CounterReducer";
+import UserProfile from "./Components/React-Topics/PureComponents/PureClass";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/customHook",
         element: <Counter />,
+      },
+      {
+        path: "/pureComponent",
+        element: <UserProfile />,
       },
       {
         path: "/useMemo",

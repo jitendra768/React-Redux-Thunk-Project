@@ -277,6 +277,30 @@ export default function Navbar() {
                     >
                       Use Reducer
                     </Link>
+                    <Link
+                      to={"/useMemo"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Use Memo
+                    </Link>
+                    <Link
+                      to={"/effect"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Use Effect
+                    </Link>
+                    <Link
+                      to={"/callback"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Use callback
+                    </Link>
+                    <Link
+                      to={"/pureComponent"}
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
+                      Pure Component
+                    </Link>
                     <a
                       href="#"
                       className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
