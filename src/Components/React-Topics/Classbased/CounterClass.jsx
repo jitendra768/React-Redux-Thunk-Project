@@ -1,4 +1,17 @@
 import { Component } from "react";
+// 1. super()
+// The super() method is used to call the constructor of the parent class (in this case, React.Component).
+// If you don’t call super(), this will not be initialized, and you’ll get an error.
+
+// 2. constructor()
+// The constructor() is a special method used to initialize the state and bind methods in a class component.
+// Use it to initialize state or bind event handlers.
+// If you don’t need to initialize state or bind methods, you can omit the constructor.
+
+// 3. render()
+// The render() method is responsible for describing what the UI should look like.
+// It returns JSX (or null if nothing should be rendered).
+// It is called whenever the component’s state or props change.
 
 export default class CounterClass extends Component {
   constructor(props) {
