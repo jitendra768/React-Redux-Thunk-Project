@@ -301,12 +301,43 @@ export default function Navbar() {
                     >
                       Pure Component
                     </Link>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                    >
-                      Earnings
-                    </a>
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleNestedSubmenu("moreOptions")}
+                        className="flex justify-between w-full px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      >
+                        More Topics
+                        <svg
+                          className={`w-4 h-4 ml-2 transform transition-transform ${
+                            openNestedSubmenu === "moreOptions"
+                              ? "rotate-180"
+                              : "rotate-0"
+                          }`}
+                          viewBox="0 0 10 6"
+                          fill="none"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M1 1l4 4 4-4"
+                          />
+                        </svg>
+                      </button>
+
+                      {/* Nested Dropdown Menu */}
+                      {openNestedSubmenu === "moreOptions" && (
+                        <div className="absolute left-full top-0 mt-0 w-44 bg-white shadow-lg rounded-md z-10">
+                          <Link
+                            to={"/topics"}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            Prop Driling
+                          </Link>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
               </li>
