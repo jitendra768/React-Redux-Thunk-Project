@@ -1,0 +1,15 @@
+Webpack is a powerful tool for building the javascript application.
+You can handle the entire javascript application into a single file.
+and also minified the html, css and images into a single file.
+
+Advantage
+1. It can dependency management.
+2. Faster Deployment.
+
+Setting Webpack
+Step-1=> npm init -y -> for generating package.json file.
+step-2=> npm i webpack webpack-cli webpack-dev-server --save-dev
+step-3=> npm i @babel/core @babel/present-env
+step-4=> npm i html-webpack-plugin --save-dev
+step-5=> now create a webpack.config.js file in root
+step-6=> create a .babelrc file in the root.

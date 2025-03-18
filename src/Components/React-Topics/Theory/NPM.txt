@@ -1,0 +1,4 @@
+npm stand for node package manager and registery that used to manage javascript package in react.
+npm allow to the install package and uninstall package updating and managing package in our project.
+npm install with node.js so you need to install node.js to get npm.
+npm allow developers to focus on building user interface and funtionality.

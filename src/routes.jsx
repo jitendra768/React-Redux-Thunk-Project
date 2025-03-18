@@ -32,6 +32,8 @@ import UseRefhooks from "./Components/React-Topics/Useref/UseRefhooks";
 import CounterReducer from "./Components/React-Topics/UseReducers/CounterReducer";
 import UserProfile from "./Components/React-Topics/PureComponents/PureClass";
 import LiftingStateup from "./Components/React-Topics/LiftingState/LiftingStateup";
+import UserLogin from "./Components/React-Topics/Auth/UserLogin";
+import UserAutherization from "./Components/React-Topics/Auth/UserAutherization";
 
 const router = createBrowserRouter([
   {
@@ -100,6 +102,14 @@ const router = createBrowserRouter([
       {
         path: "/liftingstate",
         element: <LiftingStateup />,
+      },
+      {
+        path: "/userLogin",
+        element: <UserLogin />,
+      },
+      {
+        path: "/autherization",
+        element: <UserAutherization />,
       },
       {
         path: "/lifecycle",

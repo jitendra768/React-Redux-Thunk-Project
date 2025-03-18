@@ -1,0 +1,8 @@
+CI and CD stand for continuous integration and continuous delivery.
+CICD pipline can deliver new features and updates to customer more quickly.
+can reduce the risk of human error in the Deployment process.
+improve quality of code and safety.
+store your react project code in a git repo like github and the clone the repo from github.
+then install all dependency via npm install.
+after build production building via npm run build.
+netlify

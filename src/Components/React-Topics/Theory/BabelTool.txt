@@ -1,0 +1,8 @@
+Babel is a javascript compiler that converts modern javascript code into a version that can be used by older browser.
+Babel can convert jsx(javascript xml) into javascript.
+npm install --save-dev @babel/preset-react
+babel.config.json
+
+{
+    'presets':['@babel/preset-react']
+}
