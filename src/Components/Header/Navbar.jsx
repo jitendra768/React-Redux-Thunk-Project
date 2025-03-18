@@ -335,6 +335,12 @@ export default function Navbar() {
                           >
                             Prop Driling
                           </Link>
+                          <Link
+                            to={"/liftingstate"}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            Lifting Stateup
+                          </Link>
                         </div>
                       )}
                     </div>

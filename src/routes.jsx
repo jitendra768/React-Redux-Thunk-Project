@@ -31,6 +31,7 @@ import BgChanger from "./Components/React-Topics/BgChanger/BgChanger";
 import UseRefhooks from "./Components/React-Topics/Useref/UseRefhooks";
 import CounterReducer from "./Components/React-Topics/UseReducers/CounterReducer";
 import UserProfile from "./Components/React-Topics/PureComponents/PureClass";
+import LiftingStateup from "./Components/React-Topics/LiftingState/LiftingStateup";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: "/usestate",
         element: <UseStateHook />,
+      },
+      {
+        path: "/liftingstate",
+        element: <LiftingStateup />,
       },
       {
         path: "/lifecycle",
