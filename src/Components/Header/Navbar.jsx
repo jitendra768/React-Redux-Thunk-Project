@@ -353,6 +353,12 @@ export default function Navbar() {
                           >
                             Autherization
                           </Link>
+                          <Link
+                            to={"/lifecycle"}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            Class Counter
+                          </Link>
                         </div>
                       )}
                     </div>

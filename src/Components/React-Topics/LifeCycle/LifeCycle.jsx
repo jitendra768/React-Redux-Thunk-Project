@@ -26,6 +26,10 @@ class Counter extends Component {
       <div>
         <p>Count: {this.state.count}</p>
         <button onClick={this.handleClick.bind(this)}>Increment</button>
+        <Header/>
+        <Header1/>
+        <ExampleComponent/>
+        <MyComponent/>
       </div>
     );
   }
@@ -39,22 +43,22 @@ export default Counter;
 // It is typically used to set up any necessary event listeners or timers, perform any necessary API calls or data fetching,
 // and perform other initialization tasks that require access to the browser's DOM API.
 
-// export class Header extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { favoritefood: "rice" };
-//   }
+export class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { favoritefood: "rice" };
+  }
 
-//   componentDidMount() {
-//     setTimeout(() => {
-//       this.setState({ favoritefood: "pizza" });
-//     }, 1000);
-//   }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ favoritefood: "pizza" });
+    }, 1000);
+  }
 
-//   render() {
-//     return <h1>My Favorite Food is {this.state.favoritefood}</h1>;
-//   }
-// }
+  render() {
+    return <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">My Favorite Food is {this.state.favoritefood}</h1>;
+  }
+}
 
 // **************************************Component Updating Phase*******************************
 // 3. Component Updating Phase
@@ -63,65 +67,65 @@ export default Counter;
 // 1. shouldComponentUpdate()
 //2.componentWillUpdate()
 
-// export class Header1 extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { favoriteFood: "rice" };
-//   }
+export class Header1 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { favoriteFood: "rice" };
+  }
 
-//   shouldComponentUpdate(nextProps, nextState) {
-//     // Only re-render if the favoriteFood state has changed
-//     return this.state.favoriteFood !== nextState.favoriteFood;
-//   }
+  shouldComponentUpdate(nextProps, nextState) {
+    // Only re-render if the favoriteFood state has changed
+    return this.state.favoriteFood !== nextState.favoriteFood;
+  }
 
-//   changeFood = () => {
-//     this.setState({ favoriteFood: "Pizza" });
-//   };
+  changeFood = () => {
+    this.setState({ favoriteFood: "Pizza" });
+  };
 
-//   render() {
-//     return (
-//       <div>
-//         <h1>My Favorite Food is {this.state.favoriteFood}</h1>
-//         <button type="button" onClick={this.changeFood}>
-//           Change food
-//         </button>
-//       </div>
-//     );
-//   }
-// }
+  render() {
+    return (
+      <div>
+        <h1>My Favorite Food is {this.state.favoriteFood}</h1>
+        <button type="button" onClick={this.changeFood}>
+          Change food
+        </button>
+      </div>
+    );
+  }
+}
 
 // componentDidUpdate
 // The componentDidUpdate() method is a lifecycle method in React that is called after a component has been updated and re-rendered.
 
-// export class ExampleComponent extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       count: 0,
-//     };
-//   }
+export class ExampleComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
 
-//   componentDidUpdate(prevProps, prevState) {
-//     if (prevState.count !== this.state.count) {
-//       console.log("Count has been updated:", this.state.count);
-//     }
-//   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count) {
+      console.log("Count has been updated:", this.state.count);
+    }
+  }
 
-//   handleClick() {
-//     this.setState((prevState) => ({
-//       count: prevState.count + 1,
-//     }));
-//   }
+  handleClick() {
+    this.setState((prevState) => ({
+      count: prevState.count + 1,
+    }));
+  }
 
-//   render() {
-//     return (
-//       <div>
-//         <p>Count: {this.state.count}</p>
-//         <button onClick={() => this.handleClick()}>Increment</button>
-//       </div>
-//     );
-//   }
-// }
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={() => this.handleClick()}>Increment</button>
+      </div>
+    );
+  }
+}
 
 // getSnapshotBeforeUpdate
 
@@ -131,34 +135,34 @@ export default Counter;
 
 // componentWillUnmount()
 
-// export class MyComponent extends Component {
-//   state = {
-//     showChild: true,
-//   };
+export class MyComponent extends Component {
+  state = {
+    showChild: true,
+  };
 
-//   handleDelete = () => {
-//     this.setState({ showChild: false });
-//   };
+  handleDelete = () => {
+    this.setState({ showChild: false });
+  };
 
-//   render() {
-//     const { showChild } = this.state;
+  render() {
+    const { showChild } = this.state;
 
-//     return (
-//       <div>
-//         {showChild && <Child />}
-//         <button type="button" onClick={this.handleDelete}>
-//           Delete Header
-//         </button>
-//       </div>
-//     );
-//   }
-// }
+    return (
+      <div>
+        {showChild && <Child />}
+        <button type="button" onClick={this.handleDelete}>
+          Delete Header
+        </button>
+      </div>
+    );
+  }
+}
 
-// class Child extends Component {
-//   componentWillUnmount() {
-//     alert("The component named Child is about to be unmounted.");
-//   }
-//   render() {
-//     return <h1>Hello World!</h1>;
-//   }
-// }
+class Child extends Component {
+  componentWillUnmount() {
+    alert("The component named Child is about to be unmounted.");
+  }
+  render() {
+    return <h1>Hello World!</h1>;
+  }
+}
