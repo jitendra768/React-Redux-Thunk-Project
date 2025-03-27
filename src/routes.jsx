@@ -34,6 +34,7 @@ import UserProfile from "./Components/React-Topics/PureComponents/PureClass";
 import LiftingStateup from "./Components/React-Topics/LiftingState/LiftingStateup";
 import UserLogin from "./Components/React-Topics/Auth/UserLogin";
 import UserAutherization from "./Components/React-Topics/Auth/UserAutherization";
+import PaginationMain from "./Components/React-Topics/Pagination/PaginationMain";
 
 const router = createBrowserRouter([
   {
@@ -174,6 +175,10 @@ const router = createBrowserRouter([
       {
         path: "/bgchnager",
         element: <BgChanger />,
+      },
+      {
+        path: "/pagination",
+        element: <PaginationMain />,
       },
       {
         path: "/*",
