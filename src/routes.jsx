@@ -35,6 +35,7 @@ import LiftingStateup from "./Components/React-Topics/LiftingState/LiftingStateu
 import UserLogin from "./Components/React-Topics/Auth/UserLogin";
 import UserAutherization from "./Components/React-Topics/Auth/UserAutherization";
 import PaginationMain from "./Components/React-Topics/Pagination/PaginationMain";
+import MyProducts from "./Components/React-Topics/Listing/MyProducts";
 
 const router = createBrowserRouter([
   {
@@ -179,6 +180,10 @@ const router = createBrowserRouter([
       {
         path: "/pagination",
         element: <PaginationMain />,
+      },
+      {
+        path: "/myproduct",
+        element: <MyProducts />,
       },
       {
         path: "/*",

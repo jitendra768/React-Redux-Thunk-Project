@@ -373,12 +373,12 @@ export default function Navbar() {
               </li>
 
               <li>
-                <a
-                  href="#"
+                <Link
+                  to={'/myproduct'}
                   className="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                 >
-                  Services
-                </a>
+                  My Product
+                </Link>
               </li>
               <li>
                 <a
