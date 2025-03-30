@@ -19,7 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="min-h-full">
+    <div className="fixed w-full top-0 z-50 shadow-lg">
       <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div className="text-2xl font-bold text-gray-800">
@@ -378,6 +378,16 @@ export default function Navbar() {
                   className="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                 >
                   My Product
+                </Link>
+                
+              </li>
+              <li>
+                
+                <Link
+                  to={'/accordian'}
+                  className="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                >
+                  Accordian
                 </Link>
               </li>
               <li>
