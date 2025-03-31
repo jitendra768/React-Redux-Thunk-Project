@@ -37,6 +37,7 @@ import UserAutherization from "./Components/React-Topics/Auth/UserAutherization"
 import PaginationMain from "./Components/React-Topics/Pagination/PaginationMain";
 import MyProducts from "./Components/React-Topics/Listing/MyProducts";
 import Accordian from "./Components/React-Topics/Accordian/Accordian";
+import FormValidation from "./Components/React-Topics/FormValidation/FormValidation";
 
 const router = createBrowserRouter([
   {
@@ -189,6 +190,10 @@ const router = createBrowserRouter([
       {
         path: "/accordian",
         element: <Accordian />,
+      },
+      {
+        path: "/formValidation",
+        element: <FormValidation />,
       },
       {
         path: "/*",
