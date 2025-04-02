@@ -5,23 +5,23 @@
 // 2.
 // const name = 'dimple';
 // 3.
-const one = false || {} || null;
-const two = null || false || "";
-const three = [] || 0 || true;
+// const one = false || {} || null;
+// const two = null || false || "";
+// const three = [] || 0 || true;
 
-console.log(one, two, three);
+// console.log(one, two, three);
 
 // 4.
-// const colorConfig = {
-//     red: true,
-//     green: false,
-//     blue: true,
-//     black: true,
-//     yellow: false
-// }
+const colorConfig = {
+    red: true,
+    green: false,
+    blue: true,
+    black: true,
+    yellow: false
+}
 
 // const colors = ['pink','red','blue'];
-// console.log(colorConfig.colors[1])
+console.log(colorConfig.colors[1])
 
 // 5.
 
@@ -42,24 +42,24 @@ console.log(one, two, three);
 
 // 7.
 
-const add = (x) => (y) => (z) => {
-  console.log(x, y, z);
-  return x + y + z;
-};
-add(4)(5)(6);
+// const add = (x) => (y) => (z) => {
+//   console.log(x, y, z);
+//   return x + y + z;
+// };
+// add(4)(5)(6);
 
 // 8.
-const myPromise = Promise.resolve("wow some cool data");
+// const myPromise = Promise.resolve("wow some cool data");
 
-(async () => {
-  try {
-    console.log(await myPromise);
-  } catch {
-    throw new Error("opps did not work");
-  } finally {
-    console.log("oh finaly");
-  }
-})();
+// (async () => {
+//   try {
+//     console.log(await myPromise);
+//   } catch {
+//     throw new Error("opps did not work");
+//   } finally {
+//     console.log("oh finaly");
+//   }
+// })();
 
 // 9.
 // const handler = {

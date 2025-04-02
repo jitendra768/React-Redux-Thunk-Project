@@ -15,6 +15,7 @@ function example() {
   var localVar = "I am local";
   console.log(localVar);
 }
+
 example();
 // console.log(localVar);
 

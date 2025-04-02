@@ -38,6 +38,7 @@ import PaginationMain from "./Components/React-Topics/Pagination/PaginationMain"
 import MyProducts from "./Components/React-Topics/Listing/MyProducts";
 import Accordian from "./Components/React-Topics/Accordian/Accordian";
 import FormValidation from "./Components/React-Topics/FormValidation/FormValidation";
+import Recipes from "./Components/React-Topics/Recipes/Recipes";
 
 const router = createBrowserRouter([
   {
@@ -194,6 +195,10 @@ const router = createBrowserRouter([
       {
         path: "/formValidation",
         element: <FormValidation />,
+      },
+      {
+        path: "/recipe",
+        element: <Recipes />,
       },
       {
         path: "/*",
