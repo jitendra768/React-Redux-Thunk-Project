@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 
+// useEffect is a powerful React hook used for handling side effects in functional components.
+// It runs after the component renders and can be used in different scenarios.
+// Without dependencies (useEffect(() => {...})) → Runs after every render.
+// With an empty array (useEffect(() => {...}, [])) → Runs only once on mount.
+// With dependencies (useEffect(() => {...}, [dep])) → Runs when dep changes.
+// Cleanup function (return () => {...}) → Runs before unmount or before re-running the effect.
+
 const MyUseEffect = () => {
   const [count, setCount] = useState(0);
 
