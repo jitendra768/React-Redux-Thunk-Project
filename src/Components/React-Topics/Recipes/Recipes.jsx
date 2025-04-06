@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 const Recipes = () => {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.recipee);
-  console.log("🚀 ~ Recipes ~ data:", data);
   useEffect(() => {
     dispatch(fetchRecipes());
   }, [dispatch]);
